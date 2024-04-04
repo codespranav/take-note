@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Card = () => {
     const cardStyle = {
         width: '18rem',
