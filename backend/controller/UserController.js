@@ -1,5 +1,5 @@
-import { hashPassword } from "../helper/authHelper";
-import UserModel from "../models/UserModel";
+import { hashPassword } from "../helper/authHelper.js";
+import UserModel from "../models/UserModel.js";
 
 export const registerController = async (req, res) => {
   try {
@@ -29,9 +29,6 @@ export const registerController = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      phone,
-      address,
-      answer,
     }).save();
     res.status(201).json({
       success: true,

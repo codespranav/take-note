@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import express from "express"
+import { registerController } from "../controller/UserController.js";
 const router = express.Router();
 
 // authentication route
-router.post("/register", )
+router.post("/register", registerController )
 
 
 export default router;
