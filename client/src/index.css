@@ -31,6 +31,17 @@ body{
 .circle:before {
   content: '+';
 }
+
+.formbox{
+  padding: 34px !important;
+}
+
+.done-btn{
+  margin-top: 40px !important;
+}
+.icon_profile{
+  font-size: 25px;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

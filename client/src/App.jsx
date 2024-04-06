@@ -1,14 +1,21 @@
-import Navbar from './layout/Navbar';
-import FloatingButton from './components/FloatingButton';
-import Card from './components/Card';
+import { Routes, Route } from "react-router-dom";
+import Home from './pages/Home';
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 
 const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <FloatingButton/>
-      <Card/>
-    </div>
+    <>
+    <Routes>
+       <Route path='/' element = {<Home/>}/>
+       <Route path='/notes' element = {<Home/>}/>
+       <Route path='/profile' element = {<Profile/>}/>
+       <Route path='/login' element = {<Login/>}/>
+       <Route path='/register' element = {<Register/>}/>
+    </Routes>
+    </>
   )
 }
 

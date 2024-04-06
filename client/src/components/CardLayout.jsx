@@ -1,4 +1,4 @@
-const Card = () => {
+const CardLayout = () => {
     const cardStyle = {
         width: '18rem',
         backgroundColor: "#07072D",
@@ -40,4 +40,4 @@ const Card = () => {
     )
 }
 
-export default Card
+export default CardLayout
