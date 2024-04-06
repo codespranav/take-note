@@ -1,5 +1,4 @@
-import mongoose, { Schema } from "mongoose";
-
+import mongoose from "mongoose";
 
 const NoteSchema = new mongoose.Schema({
     title: {
@@ -10,9 +9,11 @@ const NoteSchema = new mongoose.Schema({
         type: String, 
     },
     createdBy: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "User"
     }
-}, {timestamps: true})
+}, { timestamps: true });
 
-export default mongoose.model("Note", NoteSchema);
+const Note = mongoose.model("Note", NoteSchema);
+
+export default Note;

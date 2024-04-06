@@ -1,8 +1,10 @@
 import express from "express"
-import { addNoteController } from "../controller/NoteController.js";
+import { addNoteController, fetchNoteController } from "../controller/NoteController.js";
+import { requireSignIn } from "../middlewares/auth-middleware.js";
 
 const router = express.Router();
 
-router.post("/add-note", addNoteController)
+router.post("/add-note", requireSignIn, addNoteController)
+router.post("/view-note", requireSignIn, fetchNoteController)
 
 export default router
