@@ -5,7 +5,9 @@ export const requireSignIn = (req, res, next) => {
         // const token = userID.split("Bearer ")[1];
 
         if(typeof token !== "undefined"){
-           const decode = JWT.verify(token, process.env.JWT_SECRET);
+            const expiresIn = '80d';
+    
+           const decode = JWT.verify(token, process.env.JWT_SECRET,  { expiresIn });
            req.user = decode;
            next();
         }

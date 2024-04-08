@@ -5,6 +5,6 @@ import { requireSignIn } from "../middlewares/auth-middleware.js";
 const router = express.Router();
 
 router.post("/add-note", requireSignIn, addNoteController)
-router.post("/view-note", requireSignIn, fetchNoteController)
+router.get("/view-note", requireSignIn, fetchNoteController)
 
 export default router

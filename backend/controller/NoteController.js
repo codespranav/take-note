@@ -14,7 +14,11 @@ export const addNoteController = async (req, res)=>{
                 createdBy: createdBy
             });
             await newNote.save();
-            res.send(newNote);
+            res.status(200).json({
+                success: true,
+                message: "Note Added", 
+                newNote,
+            });
         }
     } catch (error) {
         res.json({

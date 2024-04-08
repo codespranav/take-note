@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import  { useState } from 'react'
 import { Modal } from 'antd';
 import AddNoteForm from './AddNoteForm';
@@ -7,16 +8,15 @@ const FloatingButton = () => {
     const showModal = () => {
       setIsModalOpen(true);
     };
-    const handleOk = () => {
-      setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-      setIsModalOpen(false);
-    };
+
+    const onCancel = ()=>{
+      setIsModalOpen(false)
+    }
+ 
   return (
     <div>
-      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-       <AddNoteForm/>
+      <Modal title = "Add New Note" open={isModalOpen} footer = {null} closeIcon = {!isModalOpen}>
+        <AddNoteForm onCancelClicked = {onCancel}/>
       </Modal>
       
     <div className="circle" onClick={showModal}></div>
