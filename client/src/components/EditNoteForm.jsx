@@ -4,18 +4,16 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 
-const AddNoteForm = ({fetchAllNotes, onCancelClicked}) => {
-  const { auth } = useAuth();
+const EditNoteForm = ({fetchAllNotes, selected, onCancelClicked}) => {
+    const { auth } = useAuth();
+    const [title, setTitle] = useState(selected.title)
+    const [description, setDescription] = useState(selected.description)
   
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  
-
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      let res = await axios.post("/api/note/add-note", {
-        title, description
+      let res = await axios.post(`/api/note/edit-note/${selected._id}`, {
+        editedTitle: title, editedDesc: description
       }, {
         headers: {
           "Authorization": auth.token
@@ -25,8 +23,6 @@ const AddNoteForm = ({fetchAllNotes, onCancelClicked}) => {
         toast.success(res.data.message || "Note Added")
         fetchAllNotes();
         onCancelClicked();
-        setTitle("")
-        setDescription("")
       }
     } catch (error) {
       toast.error(error)
@@ -49,4 +45,4 @@ const AddNoteForm = ({fetchAllNotes, onCancelClicked}) => {
   );
 };
 
-export default AddNoteForm;
+export default EditNoteForm;

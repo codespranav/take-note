@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import NotesModel from "../models/NotesModel.js";
 
 export const addNoteController = async (req, res)=>{
@@ -41,5 +42,48 @@ export const fetchNoteController = async (req, res) => {
         res.json({
             error: "Error" + error
         })
+    }
+}
+
+// edit note
+
+export const editNoteController = async (req, res) =>{
+    try {   
+        const { noteid } = req.params;
+        const { editedTitle, editedDesc } = req.body;
+
+        // Validate if noteid exists
+        if (!noteid) {
+            return res.status(400).json({ error: "noteid is required" });
+        }
+
+        // Validate editedTitle and editedDesc
+        if (!editedTitle || !editedDesc) {
+            return res.status(400).json({ error: "editedTitle and editedDesc are required" });
+        }
+
+        // Validate if noteid is a valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(noteid)) {
+            return res.status(400).json({ error: "Invalid noteid" });
+        }
+
+        const updatedNote = await NotesModel.findByIdAndUpdate(
+            noteid,
+            { title: editedTitle, description: editedDesc },
+            { new: true }
+        );
+
+        if (!updatedNote) {
+            return res.status(404).json({ error: "Note not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            updatedNote,
+            noteid
+        });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 }

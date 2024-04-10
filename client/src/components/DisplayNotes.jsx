@@ -5,6 +5,7 @@ import { Modal } from 'antd';
 import AddNoteForm from './AddNoteForm';
 import axios from "axios"
 import { useEffect, useState } from "react";
+import EditNoteForm from "./EditNoteForm";
 
 const DisplayNotes = () => {
     const {auth} = useAuth();
@@ -16,8 +17,10 @@ const DisplayNotes = () => {
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModelOpen, setIsEditModelOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [selected, setSelected] = useState(null);
+
 
     const handleAddNewNote = () => {
         setIsModalOpen(true);
@@ -26,22 +29,15 @@ const DisplayNotes = () => {
     };
 
     const handleEditNote = (note) => {
-        setIsModalOpen(true);
-        setModalTitle("Edit");
+        setIsEditModelOpen(true);
+        setModalTitle("Edit Note");
         setSelected(note);
     };
 
-    const handleEditNoteOnClick = async ()=> {
-        try {
-            let {data} = await axios.post("")
-        } catch (error) {
-            toast.error(error)
-        }
-    }
-
-    const onCancel = (e) => {
-        e.preventDefault();
+    const onCancel = () => {
         setIsModalOpen(false);
+        setIsEditModelOpen(false)
+        setSelected(null)
     };
 
     // fetch notes
@@ -81,9 +77,13 @@ const DisplayNotes = () => {
                 ))}
             </div>
 
-            {/* add note model  */}
-            <Modal title={modalTitle} open={isModalOpen} footer={null} closeIcon={!isModalOpen}>
-                <AddNoteForm onCancelClicked={onCancel} fetchAllNotes={fetchNotes} selectedNoteTitle = {selected ? selected.title : null} selectedNoteDesc = {selected ? selected.description : null}/>
+            {/* add/edit note model  */}
+            <Modal title={modalTitle} open={isModalOpen} footer={null} onCancel={onCancel}>
+                <AddNoteForm onCancelClicked={onCancel} fetchAllNotes={fetchNotes}  selected={selected}/>
+            </Modal>
+            
+            <Modal title={modalTitle} open={isEditModelOpen} footer={null} onCancel={onCancel}>
+                <EditNoteForm onCancelClicked={onCancel} fetchAllNotes={fetchNotes}  selected={selected}/>
             </Modal>
         </div>
         : (
