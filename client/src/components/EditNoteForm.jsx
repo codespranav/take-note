@@ -36,7 +36,7 @@ const EditNoteForm = ({fetchAllNotes, selected, onCancelClicked}) => {
           <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className="mb-3">
-          <textarea type="text" className="form-control" placeholder="Take a note..." value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea type="text" rows="25" cols="5" className="form-control" placeholder="Take a note..." value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-secondary me-3">SAVE</button>
         <button type="button" className="btn btn-danger" onClick={onCancelClicked}>CLOSE</button>

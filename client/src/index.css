@@ -1,5 +1,4 @@
 body{
-  height: 100vh;
   box-sizing: border-box;
   background-color: #252440;
 }
@@ -20,11 +19,11 @@ body{
   color: #070216;
   font-size: 29px;
   text-align: center;
-  position: absolute;
+  margin: 45px;
+  cursor: pointer;
+  position: fixed;
   bottom: 0;
   right: 0;
-  margin: 15px;
-  cursor: pointer;
   z-index: 1;
 }
 
@@ -42,6 +41,7 @@ body{
 .icon_profile{
   font-size: 25px;
 }
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

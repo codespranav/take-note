@@ -11,7 +11,8 @@ const DisplayNotes = () => {
     const {auth} = useAuth();
     const [notes, setNotes] = useState([]);
     const cardStyle = {
-        width: '18rem',
+        width: '28rem',
+        height: "20rem",
         backgroundColor: "#07072D",
         color: "white"
     }
@@ -69,9 +70,12 @@ const DisplayNotes = () => {
                 {notes?.map((item) => (
                     <div role="button" key={item._id} className="card mx-4 my-4 border border-white" style={cardStyle}>
                         <div className="card-body" onClick={() => handleEditNote(item)}>
-                            <h5 className="card-title">{item.title}</h5>
-                            <p className="card-text">{item.description}</p>
-                            <a href="#" className="btn btn-primary view-button">View Note</a>
+                            <h5 className="card-title long-text">{item.title}</h5>
+                            {item.description.length > 200 ? `${item.description.substring(0, 200)}...` : item.description}
+                            <div className="position-absolute bottom-0 py-4">
+                                <a href="#" className="btn btn-primary view-button me-2">View Note</a>
+                                <a href="#" className="btn btn-primary view-button">Delete Note</a>
+                            </div>
                         </div>
                     </div>
                 ))}
