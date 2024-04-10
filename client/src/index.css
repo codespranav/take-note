@@ -2,6 +2,9 @@ body{
   box-sizing: border-box;
   background-color: #252440;
 }
+*{
+  box-sizing: border-box;
+}
 .nav-bar{
     background-color: #070216 !important;  
 }
@@ -42,6 +45,10 @@ body{
   font-size: 25px;
 }
 
+.mainelem{
+  height: 100vh;
+  overflow: auto;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

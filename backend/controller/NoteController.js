@@ -87,3 +87,23 @@ export const editNoteController = async (req, res) =>{
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
+
+// delete note controller
+
+export const deleteNoteController = async(req, res) =>{
+    try {
+        const {noteID} = req.params;
+           // Validate if noteid exists
+        if (!noteID) {
+            return res.status(400).json({ error: "noteid is required" });
+        }
+        await NotesModel.findByIdAndDelete(noteID).then(res.status(200).send({
+            message: "Note Deleted",
+            success: true
+        }))
+
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}

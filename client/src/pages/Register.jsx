@@ -3,6 +3,7 @@ import MainLayout from '../layout/MainLayout'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../helper/helper';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Register = () => {
     const handleFormSubmit = async (e)=> {
         e.preventDefault();
         try {
-            let res = await axios.post("/api/auth/register", {name, email, password})
+            let res = await axios.post(`${baseURL}/api/auth/register`, {name, email, password})
             if(res?.data?.success){
                 toast.success("Registered")
                 setTimeout(() => {

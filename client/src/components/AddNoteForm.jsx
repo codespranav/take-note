@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
+import { baseURL } from '../helper/helper';
+
 
 const AddNoteForm = ({fetchAllNotes, onCancelClicked}) => {
   const { auth } = useAuth();
@@ -14,7 +16,7 @@ const AddNoteForm = ({fetchAllNotes, onCancelClicked}) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      let res = await axios.post("/api/note/add-note", {
+      let res = await axios.post(`${baseURL}/api/note/add-note`, {
         title, description
       }, {
         headers: {

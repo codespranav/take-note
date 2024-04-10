@@ -22,7 +22,7 @@ const ContextProvider = (props) => {
             setIsInitialized(true);
         }
         //eslint-disable-next-line
-      }, [])
+      }, [auth.token])
     return (
         <AuthContext.Provider value={{ auth, setAuth, isInitialized }}>
             {props.children}

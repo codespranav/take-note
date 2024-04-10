@@ -1,0 +1,1 @@
+export const baseURL = "https://take-note-backend.onrender.com"

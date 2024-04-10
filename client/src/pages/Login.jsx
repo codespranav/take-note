@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
+import { baseURL } from '../helper/helper';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Login = () => {
     const handleFormSubmit = async (e)=> {
         e.preventDefault();
         try {
-            let res = await axios.post("/api/auth/login", {email, password})
+            let res = await axios.post(`${baseURL}/api/auth/login`, {email, password})
             if(res.data.success){
                 toast.success("Logged in succesfull")
                 navigate("/")
