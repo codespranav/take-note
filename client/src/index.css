@@ -49,6 +49,20 @@ body{
   height: 100vh;
   overflow: auto;
 }
+.footer-style{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.footer-style a{
+  text-decoration: none;
+  color: #7a8f9d;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
