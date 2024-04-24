@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import MainLayout from '../layout/MainLayout'
 import { toast } from 'react-toastify';
 import axios from 'axios';
